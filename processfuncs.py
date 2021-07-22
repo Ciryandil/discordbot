@@ -38,7 +38,7 @@ def get_probs(text):
     return prob_dictionary
 
 
-sentence = input('give text: ')
-print(process_text(sentence))
-print(get_tokens(sentence))
-print(get_probs(sentence))
+# sentence = input('give text: ')
+# print(process_text(sentence))
+# print(get_tokens(sentence))
+# print(get_probs(sentence))
