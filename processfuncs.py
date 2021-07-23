@@ -9,26 +9,25 @@ def process_text(text):
 
     return text 
 
-def get_tokens(text):
+def get_tokens(text, tokenizer):
     import pickle
     from keras.preprocessing.sequence import pad_sequences
     
     text_list=[text]
 
-    with open('tokenizer.pickle', 'rb') as handle:
-        tokenizer = pickle.load(handle)
+   
     
     tokenized_text_list = tokenizer.texts_to_sequences(text_list)
     tokenized_text_list = pad_sequences(tokenized_text_list, maxlen = 200)
     return tokenized_text_list
 
-def get_probs(text):
+def get_probs(text, comment_model, tokenizer):
 
     from keras import models 
     text = process_text(text)
-    token_list = get_tokens(text)
+    token_list = get_tokens(text, tokenizer)
 
-    comment_model = models.load_model('comment_class_model.h5')
+    #comment_model = models.load_model('comment_class_model.h5')
     probs = comment_model.predict(token_list)
     probs = probs.flatten()
     probs = probs.tolist()
@@ -37,8 +36,15 @@ def get_probs(text):
     
     return prob_dictionary
 
+def is_toxic(text, model, tokenizer):
 
-# sentence = input('give text: ')
-# print(process_text(sentence))
-# print(get_tokens(sentence))
-# print(get_probs(sentence))
+    proba_dict = get_probs(text, model, tokenizer)
+    
+    for key in proba_dict:
+        if proba_dict[key] > 0.5:
+            return True 
+
+    return False 
+
+
+
