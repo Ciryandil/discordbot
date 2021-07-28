@@ -1,11 +1,11 @@
-A Discord bot to detect toxic messages.
+# A Discord bot to detect toxic messages
 
-bot.py contains the bot code. Presently it just mentions the user and asks them to be respectful. 
-processfuncs contains code to preprocess a message,tokenize it, feed to the neural network, and obtain a classification
-comment_classifier is our neural network built with Keras 
-tokenizer is the string tokenizer
+* **bot.py** contains the bot code. Presently it just mentions the user and asks them to be respectful. 
+* **processfuncs** contains code to preprocess a message,tokenize it, feed to the neural network, and obtain a classification
+* **comment_classifier** is our neural network built with Keras 
+* **tokenizer** is the string tokenizer
 
-TODO:
+## TODO:
 
-Implement warning system
-Log users in file for repeated toxicity
+* Implement warning system
+* Log users in file for repeated toxicity
