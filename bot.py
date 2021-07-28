@@ -39,7 +39,7 @@ async def on_message(message):
     if toxic_flag:
         
 
-        await channel.send(f"{message.author.mention()}, let's be nice and respectful here!")
+        await channel.send(f"{message.author.mention}, let's be nice and respectful here!")
    
 
 client.run(TOKEN)
